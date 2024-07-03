@@ -1,0 +1,39 @@
+﻿<Window x:Class="CarSales.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarSales"
+        mc:Ignorable="d"
+        Title="Prodej aut" Height="450" Width="800">
+    <Grid>
+        <Button Content="Otevřít soubor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="30" Margin="5,5,5,5" Click="OpenXmlButton_Click"/>
+        
+
+        <DataGrid Name="XmlDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,40,0,0" Width="780" Height="360" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Model&#x0a;Cena bez DPH" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Model}" />
+                                <TextBlock Text="{Binding CelkovaCena, StringFormat={}{0:F2}}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Cena s DPH" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="" />
+                                <TextBlock Text="{Binding CelkovaCenaSDPH, StringFormat={}{0:F2}}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
